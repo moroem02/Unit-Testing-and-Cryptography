@@ -4,6 +4,15 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def vig_encode(text, keyword):
   new_text = ""
+  kindex = 0
+  for i in range(len(text)):
+    if kindex > len(keyword)-1:
+      kindex = 0
+    new_character = alpha.find(keyword[kindex])+alpha.find(text[i])
+    if new_character > 25:
+      new_character -= 26
+    new_text += alpha[new_character]
+    kindex += 1
   return new_text
 
 
