@@ -3,7 +3,8 @@
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def vig_encode(text, keyword):
-  return ""
+  new_text = ""
+  return new_text
 
 
 def vig_decode(text, keyword):

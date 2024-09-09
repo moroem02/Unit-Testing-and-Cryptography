@@ -15,3 +15,6 @@ class TestCaesarEncode(TestCase):
 
     def test_caesar_encode_spaces(self):
         self.assertEqual(caesar_encode("hello world", 5), "MJQQT CTWQI")
+
+    def test_caesar_encode_punctuation(self):
+        self.assertEqual(caesar_encode("hello world!!!!!!!!", 5), "MJQQT CTWQI!!!!!!!!")

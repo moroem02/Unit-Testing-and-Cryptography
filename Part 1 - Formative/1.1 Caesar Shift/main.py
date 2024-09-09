@@ -6,7 +6,7 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 def caesar_encode(text, n):
     new_text = ""
     for i in range(len(text)):
-        if text[i] in alpha:
+        if text[i].upper() in alpha:
             x = alpha.find(text[i].upper())
             if x+n > 25:
                 new_text += alpha[(x + n)-25]
@@ -20,11 +20,14 @@ def caesar_encode(text, n):
 def caesar_decode(text, n):
     new_text = ""
     for i in range(len(text)):
-        x = alpha.find(text[i].upper())
-        if x - n <0:
-            new_text += alpha[(x - n) + 25]
+        if text[i].upper() in alpha:
+            x = alpha.find(text[i].upper())
+            if x - n <0:
+                new_text += alpha[(x - n) + 25]
+            else:
+                new_text += alpha[x - n]
         else:
-            new_text += alpha[x - n]
+            new_text += text[i]
     return new_text
 
 

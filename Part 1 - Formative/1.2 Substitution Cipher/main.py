@@ -5,17 +5,29 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def sub_encode(text, codebet):
     new_text = ""
+    for i in range(len(alpha)):
+        if alpha[i] not in codebet:
+            codebet += alpha[i]
     for i in range(len(text)):
-        x = alpha.find(text[i])
-        new_text += codebet[x]
+        if text[i].upper() in alpha:
+            x = alpha.find(text[i].upper())
+            new_text += codebet[x]
+        else:
+            new_text += text[i]
     return new_text
 
 
 def sub_decode(text, codebet):
     new_text = ""
+    for i in range(len(alpha)):
+        if alpha[i] not in codebet:
+            codebet += alpha[i]
     for i in range(len(text)):
-        x = codebet.find(text[i])
-        new_text += alpha[x]
+        if text[i].upper() in alpha:
+            x = codebet.find(text[i].upper())
+            new_text += alpha[x]
+        else:
+            new_text += text[i]
     return new_text
 
 
