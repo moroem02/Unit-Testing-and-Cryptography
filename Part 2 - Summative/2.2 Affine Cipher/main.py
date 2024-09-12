@@ -85,10 +85,39 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
-    return ''
+    new_text = ""
+    grams = [""]
+    for i in range(len(text)):
+        for y in range(len(grams)):
+            if len(grams[y]) < n:
+                grams[y] += text[i]
+            elif y == len(grams)-1:
+                grams.append(text[i])
+    #add X's
+    while len(grams[len(grams)-1])<n:
+        grams[len(grams) - 1] += "X"
+
+    #turn each
+    for i in range(len(grams)):
+        x = convert_to_num(grams[i])
+        num = (a * x + b) % 26 ** n
+        new_text += convert_to_text(num, n)
+    return new_text
 
 def affine_n_decode(text, n, a, b):
-    return ''
+    new_text = ""
+    grams = [""]
+    for i in range(len(text)):
+        for y in range(len(grams)):
+            if len(grams[y]) < n:
+                grams[y] += text[i]
+            elif y == len(grams)-1:
+                grams.append(text[i])
+    for i in range(len(grams)):
+        x = convert_to_num(grams[i])
+        num = (x-b) * mod_inverse(a,26 ** n) % 26 ** n
+        new_text += convert_to_text(num, n)
+    return new_text
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 n = 5
@@ -96,5 +125,7 @@ a = 347
 b = 1721
 enc = affine_n_encode(test, n, a, b)
 dec = affine_n_decode(enc, n, a, b)
+print(affine_n_encode("COOL", 3, 3, 121))
+print(affine_n_decode("XURYWT", 3, 3, 121))
 print(enc, dec)
 # If this worked, dec should be the same as test!
