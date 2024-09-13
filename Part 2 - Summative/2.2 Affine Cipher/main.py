@@ -22,7 +22,7 @@ def mod_inverse(a, m):
 def affine_encode(text, a, b):
     new_text = ""
     for i in range(len(text)):
-        if text[i] in alpha:
+        if text[i].upper() in alpha:
             x = alpha.find(text[i].upper())
             lnum = (a * x + b) % 26
             new_text += alpha[lnum]
@@ -33,7 +33,7 @@ def affine_encode(text, a, b):
 def affine_decode(text, a, b):
     new_text = ""
     for i in range(len(text)):
-        if text[i] in alpha:
+        if text[i].upper() in alpha:
             x = alpha.find(text[i].upper())
             lnum = (x-b) * mod_inverse(a,26) % 26
             new_text += alpha[lnum]
@@ -71,7 +71,7 @@ def convert_to_text(num, n):
         x = x // 26
     return new_text
 
-test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
+test = "THIRDTESTSTRING"
 l = len(test)
 num = convert_to_num(test)
 answer = convert_to_text(num, l)
