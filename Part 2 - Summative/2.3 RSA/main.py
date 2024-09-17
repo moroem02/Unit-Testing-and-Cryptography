@@ -45,7 +45,7 @@ def get_d(p, q, e):
   t =  (p-1) * (q-1)
   return mod_inverse(e, t)
 
-print(get_d(2003, 2503, 17))
+
 
 
 text = "THEFIVEBOXINGWIZARDSJUMPQUICKLY"
