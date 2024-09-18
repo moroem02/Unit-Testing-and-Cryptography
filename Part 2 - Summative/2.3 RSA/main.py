@@ -47,7 +47,6 @@ def get_d(p, q, e):
 
 
 
-
 text = "THEFIVEBOXINGWIZARDSJUMPQUICKLY"
 l = len(text)
 p = 292361466231755597564095925310764764819
@@ -78,6 +77,5 @@ d = get_d(p, q, e)
 message = "FUNNEWMESSAGE"
 l = len(message)
 encoded = rsa_encode(message, m, e)
-
 print(encoded)
 print(rsa_decode(encoded, m, d, l))
